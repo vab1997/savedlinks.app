@@ -13,3 +13,8 @@ export async function loginGithub () {
   })
   console.error(error)
 }
+
+export async function logoutSession () {
+  const { error } = await supabase.auth.signOut()
+  console.error(error)
+}

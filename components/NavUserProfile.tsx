@@ -1,15 +1,12 @@
 import { Fragment } from 'react'
-import { Menu, Transition } from '@headlessui/react'
 import Image from 'next/image'
-import { supabase } from 'lib/supabaseClient'
-import Link from 'next/link'
+import { Menu, Transition } from '@headlessui/react'
 import ChevronIcon from 'components/icons/IconChevron'
 
-export default function NavUserProfile ({ user }: { user: any }) {
-  const logoutSession = async () => {
-    const { error } = await supabase.auth.signOut()
-    console.error(error)
-  }
+import { logoutSession } from 'service/login'
+import { User } from 'types/interfaces'
+
+export default function NavUserProfile ({ user }: { user: User }) {
 
   return (
     <Menu as="div" className="relative ml-3">
