@@ -20,6 +20,8 @@ export default function Layout ({
       <Head>
         <meta charSet='UTF-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
+        <title>{title}</title>
+        <meta name='description' content={description} />
         <link rel='icon' href='/favicon.ico' />
         <link rel='canonical' href='' />
 

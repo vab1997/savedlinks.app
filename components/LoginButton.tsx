@@ -11,7 +11,7 @@ export default function LoginButton () {
       <Menu as="div" className="relative">
         <div>
           <Menu.Button className="inline-flex items-center px-4 py-2 font-bold text-white bg-yellow-500 rounded hover:bg-yellow-400">
-            <span className='text-white font-medium'>Iniciar sesión</span><ChevronIcon fill='#fff' />
+            <span className='text-white font-medium'>Sign In</span><ChevronIcon fill='#fff' />
           </Menu.Button>
         </div>
         <Transition
