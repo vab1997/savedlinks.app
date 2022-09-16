@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['unavatar.io']
+    domains: ['unavatar.io', 'lh3.googleusercontent.com']
   },
   swcMinify: true
 }

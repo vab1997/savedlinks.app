@@ -7,8 +7,7 @@ const extractInfoFrom = (rowUser: any): User | null => {
   if (!userData) return null
 
   const idUser: string = rowUser?.id
-  const { user_name: userName, email, name } = userData
-  const avatar = `https://unavatar.io/github/${userName}`
+  const { email, name, avatar_url: avatar } = userData
   return { avatar, email, name, id: idUser }
 }
 
