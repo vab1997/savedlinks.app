@@ -1,4 +1,6 @@
 import Head from "next/head"
+import Image from "next/image"
+import linkImage from "public/link.webp"
 
 type Props = {
   title?: string,
@@ -33,7 +35,17 @@ export default function Layout({
         <meta name='twitter:description' content={description} />
       </Head>
       <main className='flex place-content-center'>
-        <div className='container py-4 px-4'>
+        <div className='container py-14 px-4 md:py-4'>
+          <h1 className='text-center font-medium text-white text-3xl md:text-4xl'>
+            Welcome to savedlinks
+            <Image
+              src={linkImage}
+              placeholder='blur'
+              width={48}
+              height={48}
+              alt='savedlinks logo'
+            />
+          </h1>
           {children}
         </div>
       </main>
