@@ -4,8 +4,8 @@ import IconFolder from "./icons/IconFolder"
 import IconLink from "./icons/IconLink"
 
 export default function NavManage() {
-  const user = useUser()
-
+  const { user } = useUser()
+  
   return (
     <>
       {user && (
