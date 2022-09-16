@@ -32,10 +32,11 @@ export default function ManageLink ({ linksForFolder = [], folders }: { linksFor
   )
 }
 
-export async function getStaticProps () {
+export async function getServerSideProps ({ query }: { query: { id: string } }) {
+  const userId = query.id
   const [links, folders] = await Promise.all([
-    getLinks(),
-    getFolders()
+    getLinks({ userId }),
+    getFolders({ userId })
   ])
 
   const linksForFolder = folders.map(folder => {

@@ -28,6 +28,8 @@ export default function FormLink ({ folders }: { folders: Folder[] }) {
     toast.success('created link successfully!')
   }
 
+  if (folders.length === 0) return <p className='text-white font-medium text-center text-lg'>¡You have to create a folder!</p>
+
   return (
     <div>
       <Toaster

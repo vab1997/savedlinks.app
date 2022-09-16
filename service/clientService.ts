@@ -1,18 +1,20 @@
 import { supabase } from 'lib/supabaseClient'
-import { Folder, Link } from 'types/interfaces'
+import { Folder, Link, User } from 'types/interfaces'
 
-export async function getLinks () {
+export async function getLinks ({ userId }: { userId: User['id'] }) {
   const { data: links } = await supabase
     .from('links')
     .select('*')
+    .eq('id_user', userId)
 
   return links as Link[]
 }
 
-export async function getFolders () {
+export async function getFolders ({ userId }: { userId: User['id'] }) {
   const { data: links } = await supabase
     .from('folders')
     .select('*')
+    .eq('id_user', userId)
 
   return links as Folder[]
 }

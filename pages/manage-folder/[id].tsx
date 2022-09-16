@@ -25,8 +25,9 @@ export default function ManageLink ({ folders = [] }: { folders: Folder[] }) {
   )
 }
 
-export async function getStaticProps () {
-  const folders = await getFolders()
+export async function getServerSideProps ({ query }: { query: { id: string } }) {
+  const userId = query.id
+  const folders = await getFolders({ userId })
 
   return {
     props: {

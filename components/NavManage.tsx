@@ -10,11 +10,11 @@ export default function NavManage () {
     <>
       {user && (
         <div className='flex flex-col gap-2'>
-          <ButtonManage route='/manage-link'>
+          <ButtonManage route={`/manage-link/${user.id}`}>
             <IconLink />
             Manage links
           </ButtonManage>
-          <ButtonManage route='/manage-folder'>
+          <ButtonManage route={`/manage-folder/${user.id}`}>
             <IconFolder />
             Manage folders
           </ButtonManage>

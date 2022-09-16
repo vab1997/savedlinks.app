@@ -5,6 +5,7 @@ import { Link as LinkType } from 'types/interfaces'
 import { supabase } from 'lib/supabaseClient'
 import Link from 'next/link'
 import IconFolder from './icons/IconFolder'
+import useUser from 'hooks/useUser'
 
 type FolderWihtLinks = {
   id: string
@@ -14,6 +15,7 @@ type FolderWihtLinks = {
 }
 
 export default function ListOfFolder ({ linksForFolder }: { linksForFolder: FolderWihtLinks[] }) {
+  const { user } = useUser()
   const [timelineLinks, setTimelineLinks] = useState<typeof linksForFolder>(linksForFolder)
 
   const updatetimelineLinks = ({ newRecord }: { newRecord: LinkType }) => {
@@ -44,7 +46,7 @@ export default function ListOfFolder ({ linksForFolder }: { linksForFolder: Fold
   if (timelineLinks.length === 0) {
     return (
       <>
-        <Link href='/manage-folder'>
+        <Link href={`/manage-folder/${user?.id}`}>
           <a className='flex items-center justify-center py-3 px-4 mt-6 space-x-4 w-full max-w-[400px] border border-slate-200 rounded-lg text-gray-200 bg-transparent hover:bg-white hover:text-black'>
             <p className='pl-4 text-sm font-normal'>
               There haven't folder so far. Create folder
