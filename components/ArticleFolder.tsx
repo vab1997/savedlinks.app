@@ -24,7 +24,7 @@ export default function ArticleFolder({ folders }: { folders: Folder[] }) {
   }, [timelineFolders])
 
   return (
-    <>
+    <div className='flex flex-col w-full gap-3 px-3 max-h-[450px] overflow-auto'>
       {timelineFolders.map(({name, id}) => (
         <article
           key={id}
@@ -34,6 +34,6 @@ export default function ArticleFolder({ folders }: { folders: Folder[] }) {
           {name}
         </article>
       ))}
-    </>
+    </div>
   )
 }

@@ -18,9 +18,9 @@ export default function ManageLink({ linksForFolder, folders }: { linksForFolder
   return (
     <section className='py-4'>
       <BackToMenu />
-      <div className="flex justify-between flex-col w-full p-4 lg:flex-row">
+      <div className="flex justify-between flex-col-reverse w-full p-4 lg:flex-row">
 
-        <div className='flex items-center justify-center flex-col gap-4 w-full px-4'>
+        <div className='flex items-center justify-center flex-col gap-4 w-full mt-6 px-4 mt:mt-0'>
           <h1 className="text-white text-3xl font-medium">List links</h1>
           <ListOfFolder linksForFolder={linksForFolder} />
         </div>
