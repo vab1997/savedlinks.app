@@ -37,7 +37,7 @@ export default function ListOfFolder({ linksForFolder }: { linksForFolder: Folde
     return () => {
       subscritpion.unsubscribe()
     }
-  }, [])
+  }, [timelineLinks])
   
   return (
     <>
