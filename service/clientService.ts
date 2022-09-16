@@ -26,3 +26,11 @@ export async function createLink({ link, description, id_user, id_folder }
 
   return data
 }
+
+export async function createFolder({ name, id_user }: { name: Folder['name'], id_user: Folder['id_user'] }) {
+  const { data } = await supabase
+    .from('folders')
+    .insert({ name, id_user })
+
+  return data
+}
