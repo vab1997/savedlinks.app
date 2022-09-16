@@ -4,7 +4,7 @@ import BackToMenu from 'components/BackToMenu'
 import FormFolder from 'components/FormFolder'
 import ArticleFolder from 'components/ArticleFolder'
 
-export default function ManageLink ({ folders }: { folders: Folder[] }) {
+export default function ManageLink ({ folders = [] }: { folders: Folder[] }) {
   return (
     <section className='py-4'>
       <BackToMenu />

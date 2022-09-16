@@ -11,7 +11,7 @@ type FolderWihtLinks = {
   links: Link[]
 }
 
-export default function ManageLink ({ linksForFolder, folders }: { linksForFolder: FolderWihtLinks[], folders: Folder[] }) {
+export default function ManageLink ({ linksForFolder = [], folders }: { linksForFolder: FolderWihtLinks[], folders: Folder[] }) {
   return (
     <section className='py-4'>
       <BackToMenu />

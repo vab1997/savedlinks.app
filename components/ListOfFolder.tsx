@@ -3,6 +3,8 @@ import ArticleLink from 'components/ArticleLink'
 import { Menu, Transition } from '@headlessui/react'
 import { Link as LinkType } from 'types/interfaces'
 import { supabase } from 'lib/supabaseClient'
+import Link from 'next/link'
+import IconFolder from './icons/IconFolder'
 
 type FolderWihtLinks = {
   id: string
@@ -38,6 +40,21 @@ export default function ListOfFolder ({ linksForFolder }: { linksForFolder: Fold
       subscritpion.unsubscribe()
     }
   }, [timelineLinks])
+
+  if (timelineLinks.length === 0) {
+    return (
+      <>
+        <Link href='/manage-folder'>
+          <a className='flex items-center justify-center py-3 px-4 mt-6 space-x-4 w-full max-w-[400px] border border-slate-200 rounded-lg text-gray-200 bg-transparent hover:bg-white hover:text-black'>
+            <p className='pl-4 text-sm font-normal'>
+              There haven't folder so far. Create folder
+            </p>
+            <IconFolder />
+          </a>
+        </Link>
+      </>
+    )
+  }
 
   return (
     <div className='flex flex-col w-full gap-3 px-3 h-[400px] overflow-auto'>

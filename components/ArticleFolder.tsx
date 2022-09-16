@@ -23,8 +23,21 @@ export default function ArticleFolder ({ folders }: { folders: Folder[] }) {
     }
   }, [timelineFolders])
 
+  if (timelineFolders.length === 0) {
+    return (
+      <div className='flex items-center justify-center py-3 px-4 mt-6 space-x-4 w-full max-w-[400px] border border-slate-200 rounded-lg text-gray-200 bg-transparent'>
+        <p className='pl-4 text-sm font-normal'>
+          There haven't folder so far. Create folder
+        </p>
+        <svg width={24} height={24} clip-rule="evenodd" fill-rule="evenodd" fill='#fff' strokeLinejoin="round" strokeMiterlimit="2" viewBox="0 0 24 24">
+          <path d="M13.022 14.999v3.251a.751.751 0 0 0 1.27.544l6.396-6.069a.998.998 0 0 0 0-1.45l-6.396-6.068a.752.752 0 0 0-1.27.543v3.251h-9.02c-.531 0-1.002.47-1.002 1v3.998c0 .53.471 1 1.002 1z" fill-rule="nonzero" />
+        </svg>
+      </div>
+    )
+  }
+
   return (
-    <div className='flex flex-col w-full gap-3 px-3 max-h-[450px] overflow-auto'>
+    <div className='flex flex-col justify-center items-center w-full gap-3 px-3 max-h-[450px] overflow-auto'>
       {timelineFolders.map(({ name, id }) => (
         <article
           key={id}
