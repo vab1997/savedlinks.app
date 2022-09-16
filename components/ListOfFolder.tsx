@@ -31,7 +31,7 @@ export default function ListOfFolder ({ linksForFolder }: { linksForFolder: Fold
       .channel('public:links')
       .on(
         'postgres_changes',
-        { event: '*', schema: 'public', table: 'links' },
+        { event: 'INSERT', schema: 'public', table: 'links' },
         (payload: any) => {
           updatetimelineLinks({ newRecord: payload.new })
         }
@@ -84,6 +84,7 @@ export default function ListOfFolder ({ linksForFolder }: { linksForFolder: Fold
                 {links.map(({ id, link, description, read }) => (
                   <Menu.Item key={id}>
                     <ArticleLink
+                      idLink={id}
                       link={link}
                       description={description}
                       read={read}

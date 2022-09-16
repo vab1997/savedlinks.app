@@ -35,3 +35,12 @@ export async function createFolder ({ name, id_user }: { name: Folder['name'], i
 
   return data
 }
+
+export async function updateReadLink ({ idLink, read }: { idLink: Link['id'], read: Link['read'] }) {
+  const { data } = await supabase
+    .from('links')
+    .update({ read })
+    .eq('id', idLink)
+
+  return data
+}
