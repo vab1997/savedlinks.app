@@ -1,6 +1,6 @@
 export default function ArticleLink ({ read, link, description }: { read: boolean, link: string, description: string }) {
   return (
-    <article className='flex items-center py-1.5 px-2 mt-2 space-x-2 w-full rounded-lg divide-x shadow text-gray-400 divide-gray-700 space-x bg-transparent hover:bg-gray-600'>
+    <article className='flex items-center py-1.5 px-2 mt-2 space-x-2 w-full rounded-md divide-x shadow text-gray-400 divide-gray-700 space-x bg-transparent hover:bg-gray-600'>
       <p>
         {read
           ? (

@@ -15,8 +15,8 @@ type FolderWihtLinks = {
 }
 
 export default function ListOfFolder ({ linksForFolder }: { linksForFolder: FolderWihtLinks[] }) {
-  const { user } = useUser()
   const [timelineLinks, setTimelineLinks] = useState<typeof linksForFolder>(linksForFolder)
+  const { user } = useUser()
 
   const updatetimelineLinks = ({ newRecord }: { newRecord: LinkType }) => {
     const newTimeline = timelineLinks.map((folder) => {
@@ -59,7 +59,7 @@ export default function ListOfFolder ({ linksForFolder }: { linksForFolder: Fold
   }
 
   return (
-    <div className='flex flex-col w-full gap-3 px-3 h-[400px] overflow-auto'>
+    <div className='flex flex-col w-full gap-3 px-3 h-[400px] overflow-auto scrollbar-thin scrollbar-thumb-slate-600 scrollbar-thumb-rounded-md'>
       {timelineLinks && timelineLinks.map(({ id, name, links }) => (
         <Menu key={id} as="div" className="relative mb-3 inline-block text-center w-full">
           <div>
@@ -79,7 +79,7 @@ export default function ListOfFolder ({ linksForFolder }: { linksForFolder: Fold
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items className="absolute border border-slate-700 z-[100] mt-2 px-2 w-full max-h-72 overflow-auto py-2 divide-y bg-black divide-gray-100 rounded-xl shadow-lg">
+            <Menu.Items className="absolute border border-slate-700 z-[100] mt-2 px-2 w-full max-h-72 overflow-auto scrollbar-thin scrollbar-thumb-slate-600 scrollbar-thumb-rounded-md py-2 divide-y bg-black divide-gray-100 rounded-md shadow-lg">
               <div className="px-1">
                 {links.map(({ id, link, description, read }) => (
                   <Menu.Item key={id}>

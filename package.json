@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "phoenix": "del /s /q package-lock.json && echo 'Borrando node_modules...' && rmdir /s /q node_modules && cls && echo 'Instalando Dependencias' && npm install --no-fund --no-audit --no-package-lock --legacy-peer-deps",
     "lint": "next lint"
   },
   "dependencies": {
@@ -16,7 +17,8 @@
     "react-dom": "18.2.0",
     "react-hook-form": "7.35.0",
     "react-hot-toast": "2.4.0",
-    "standard": "17.0.0"
+    "standard": "17.0.0",
+    "tailwind-scrollbar": "2.0.1"
   },
   "devDependencies": {
     "@types/node": "18.7.18",

@@ -37,7 +37,7 @@ export default function ArticleFolder ({ folders }: { folders: Folder[] }) {
   }
 
   return (
-    <div className='flex flex-col justify-center items-center w-full gap-3 px-3 max-h-[450px] overflow-auto'>
+    <div className='flex flex-col justify-center items-center w-full gap-3 px-3 max-h-[450px] overflow-auto scrollbar-thin scrollbar-thumb-slate-600 scrollbar-thumb-rounded-md'>
       {timelineFolders.map(({ name, id }) => (
         <article
           key={id}
