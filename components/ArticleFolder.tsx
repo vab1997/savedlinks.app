@@ -14,7 +14,6 @@ export default function ArticleFolder({ folders }: { folders: Folder[] }) {
         (payload: any) => {
           const newTimeLineFolders = [...timelineFolders, payload.new]
           setTimelineFolders(newTimeLineFolders)
-          console.log({newTimeLineFolders, payload})
         }
       )
       .subscribe()
@@ -23,8 +22,6 @@ export default function ArticleFolder({ folders }: { folders: Folder[] }) {
       subscritpion.unsubscribe()
     }
   }, [timelineFolders])
-
-  console.log(timelineFolders)
 
   return (
     <>
