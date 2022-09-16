@@ -1,11 +1,11 @@
-import useUser from "hooks/useUser"
-import ButtonManage from "./ButtonManage"
-import IconFolder from "./icons/IconFolder"
-import IconLink from "./icons/IconLink"
+import useUser from 'hooks/useUser'
+import ButtonManage from './ButtonManage'
+import IconFolder from './icons/IconFolder'
+import IconLink from './icons/IconLink'
 
-export default function NavManage() {
+export default function NavManage () {
   const { user } = useUser()
-  
+
   return (
     <>
       {user && (

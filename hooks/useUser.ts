@@ -21,11 +21,11 @@ export default function useUser () {
       const rowUser = await supabase.auth.getUser()
       const rawUser = rowUser.data.user
       if (!rawUser) return null
-      
+
       const userData = extractInfoFrom(rawUser)
       setUser(userData)
     }
-    
+
     getUserSup()
 
     const { data: listener } = supabase.auth.onAuthStateChange((even, session) => {

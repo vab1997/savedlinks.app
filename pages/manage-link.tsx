@@ -1,11 +1,8 @@
-import { getFolders, getLinks } from "service/clientService"
+import { getFolders, getLinks } from 'service/clientService'
 import { Folder, Link } from 'types/interfaces'
-import ListOfFolder from "components/ListOfFolder"
-import FormLink from "components/FormLink"
-import { supabase } from "lib/supabaseClient"
-import useUser from "hooks/useUser"
-import { useEffect } from "react"
-import BackToMenu from "components/BackToMenu"
+import ListOfFolder from 'components/ListOfFolder'
+import FormLink from 'components/FormLink'
+import BackToMenu from 'components/BackToMenu'
 
 type FolderWihtLinks = {
   id: string
@@ -14,7 +11,7 @@ type FolderWihtLinks = {
   links: Link[]
 }
 
-export default function ManageLink({ linksForFolder, folders }: { linksForFolder: FolderWihtLinks[], folders: Folder[] }) {
+export default function ManageLink ({ linksForFolder, folders }: { linksForFolder: FolderWihtLinks[], folders: Folder[] }) {
   return (
     <section className='py-4'>
       <BackToMenu />
@@ -24,7 +21,7 @@ export default function ManageLink({ linksForFolder, folders }: { linksForFolder
           <h1 className="text-white text-3xl font-medium">List links</h1>
           <ListOfFolder linksForFolder={linksForFolder} />
         </div>
-        
+
         <div className='flex flex-col gap-4 w-full px-4'>
           <h1 className="text-white text-center text-3xl mb-4 font-medium">Create link</h1>
           <FormLink folders={folders} />
@@ -35,7 +32,7 @@ export default function ManageLink({ linksForFolder, folders }: { linksForFolder
   )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps () {
   const [links, folders] = await Promise.all([
     getLinks(),
     getFolders()
@@ -45,7 +42,7 @@ export async function getStaticProps() {
     const linksForFolder = links.filter(link => link.id_folder === folder.id)
     return { ...folder, links: linksForFolder }
   })
-  
+
   return {
     props: {
       linksForFolder,

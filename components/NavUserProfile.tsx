@@ -7,7 +7,6 @@ import { logoutSession } from 'service/login'
 import { User } from 'types/interfaces'
 
 export default function NavUserProfile ({ user }: { user: User }) {
-
   return (
     <Menu as="div" className="relative ml-3">
       <div>

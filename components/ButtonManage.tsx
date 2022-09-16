@@ -1,6 +1,7 @@
-import Link from "next/link"
+import Link from 'next/link'
 
-export default function ButtonManage({children, route}: {children: React.ReactNode, route: string}) {
+// eslint-disable-next-line no-undef
+export default function ButtonManage ({ children, route }: {children: React.ReactNode, route: string}) {
   return (
     <Link href={route}>
       <a

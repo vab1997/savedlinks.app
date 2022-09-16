@@ -1,11 +1,12 @@
-import { SVGProps } from "react"
+import { SVGProps } from 'react'
 
-export default function IconGithub(props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
+// eslint-disable-next-line no-undef
+export default function IconGithub (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) {
   return (
-    <svg 
-      className="w-6 h-6 mr-2" 
-      width="16" 
-      height="16" 
+    <svg
+      className="w-6 h-6 mr-2"
+      width="16"
+      height="16"
       fill="currentColor"
       {...props}
     >

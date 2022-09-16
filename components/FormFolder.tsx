@@ -1,13 +1,13 @@
-import useUser from "hooks/useUser"
-import { useForm } from "react-hook-form"
-import toast, { Toaster } from "react-hot-toast"
-import { createFolder } from "service/clientService"
+import useUser from 'hooks/useUser'
+import { useForm } from 'react-hook-form'
+import toast, { Toaster } from 'react-hot-toast'
+import { createFolder } from 'service/clientService'
 
 type FormData = {
   nameFolder: string;
 }
 
-export default function FormFolder() {
+export default function FormFolder () {
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>()
 
   const { user } = useUser()
@@ -33,7 +33,7 @@ export default function FormFolder() {
       />
       <form onSubmit={handleSubmit(onSubmitCreateLink)} className='w-full'>
         <div className='relative z-0 mb-4 w-full px-6'>
-          <input 
+          <input
             type='text'
             {...register('nameFolder', { required: true })}
             className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-0 peer'
@@ -44,8 +44,8 @@ export default function FormFolder() {
           {errors.nameFolder && <p className="mt-2 text-sm font-bold text-red-500">This fiel is required</p>}
         </div>
         <div className='relative z-0 mb-4 w-full px-6'>
-          <button 
-            type='submit' 
+          <button
+            type='submit'
             className='text-white cursor-default bg-blue-500 hover:bg-blue-700 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center'
           >Create folder
           </button>

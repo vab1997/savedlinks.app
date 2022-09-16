@@ -1,18 +1,19 @@
-import Head from "next/head"
-import Image from "next/image"
-import linkImage from "public/link.webp"
+import Head from 'next/head'
+import Image from 'next/image'
+import linkImage from 'public/link.webp'
 
 type Props = {
   title?: string,
   description?: string,
+  // eslint-disable-next-line no-undef
   children?: React.ReactNode,
   image?: string,
 }
 
-export default function Layout({
+export default function Layout ({
   children,
-  title = 'Adóptame | Adopta tu mascota',
-  description = 'adoptame es una plataforma para difundir mascotas en adopción y mascotas extraviadas'
+  title = 'Saved Links',
+  description = 'site web for save links in folders'
 }: Props) {
   return (
     <>
@@ -20,9 +21,9 @@ export default function Layout({
         <meta charSet='UTF-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
-        <link rel='canonical' href='https://adoptame.me' />
+        <link rel='canonical' href='' />
 
-        <meta property='og:url' content='https://adoptame.me/' />
+        <meta property='og:url' content='/' />
         <meta property='og:type' content='website' />
         <meta property='og:title' content={title} />
         <meta property='og:description' content={description} />

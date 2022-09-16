@@ -1,8 +1,8 @@
-import { Fragment, useEffect, useState } from "react"
+import { Fragment, useEffect, useState } from 'react'
 import ArticleLink from 'components/ArticleLink'
 import { Menu, Transition } from '@headlessui/react'
 import { Link as LinkType } from 'types/interfaces'
-import { supabase } from "lib/supabaseClient"
+import { supabase } from 'lib/supabaseClient'
 
 type FolderWihtLinks = {
   id: string
@@ -11,13 +11,13 @@ type FolderWihtLinks = {
   links: LinkType[]
 }
 
-export default function ListOfFolder({ linksForFolder }: { linksForFolder: FolderWihtLinks[] }) {
+export default function ListOfFolder ({ linksForFolder }: { linksForFolder: FolderWihtLinks[] }) {
   const [timelineLinks, setTimelineLinks] = useState<typeof linksForFolder>(linksForFolder)
 
   const updatetimelineLinks = ({ newRecord }: { newRecord: LinkType }) => {
     const newTimeline = timelineLinks.map((folder) => {
       if (folder.id !== newRecord.id_folder) return folder
-      return {...folder, links: [...folder.links, newRecord]}
+      return { ...folder, links: [...folder.links, newRecord] }
     })
     setTimelineLinks(newTimeline)
   }
@@ -38,10 +38,10 @@ export default function ListOfFolder({ linksForFolder }: { linksForFolder: Folde
       subscritpion.unsubscribe()
     }
   }, [timelineLinks])
-  
+
   return (
     <div className='flex flex-col w-full gap-3 px-3 h-[400px] overflow-auto'>
-      {timelineLinks && timelineLinks.map(({id, name, links}) => (
+      {timelineLinks && timelineLinks.map(({ id, name, links }) => (
         <Menu key={id} as="div" className="relative mb-3 inline-block text-center w-full">
           <div>
             <Menu.Button
@@ -62,7 +62,7 @@ export default function ListOfFolder({ linksForFolder }: { linksForFolder: Folde
           >
             <Menu.Items className="absolute border border-slate-700 z-[100] mt-2 px-2 w-full max-h-72 overflow-auto py-2 divide-y bg-black divide-gray-100 rounded-xl shadow-lg">
               <div className="px-1">
-                {links.map(({ id, link, description, read }) => (    
+                {links.map(({ id, link, description, read }) => (
                   <Menu.Item key={id}>
                     <ArticleLink
                       link={link}

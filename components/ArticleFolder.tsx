@@ -1,8 +1,8 @@
-import { supabase } from "lib/supabaseClient"
-import { useEffect, useState } from "react"
-import { Folder } from "types/interfaces"
+import { supabase } from 'lib/supabaseClient'
+import { useEffect, useState } from 'react'
+import { Folder } from 'types/interfaces'
 
-export default function ArticleFolder({ folders }: { folders: Folder[] }) {
+export default function ArticleFolder ({ folders }: { folders: Folder[] }) {
   const [timelineFolders, setTimelineFolders] = useState<Folder[]>(folders)
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function ArticleFolder({ folders }: { folders: Folder[] }) {
 
   return (
     <div className='flex flex-col w-full gap-3 px-3 max-h-[450px] overflow-auto'>
-      {timelineFolders.map(({name, id}) => (
+      {timelineFolders.map(({ name, id }) => (
         <article
           key={id}
           className='inline-flex w-full items-center justify-center gap-2 border transition duration-100 ease-in-out bg-black text-white border-slate-600 font-medium rounded-lg text-sm px-4 py-1.5'

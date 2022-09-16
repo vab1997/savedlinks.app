@@ -1,7 +1,7 @@
-import { supabase } from "lib/supabaseClient"
-import { Folder, Link } from "types/interfaces"
+import { supabase } from 'lib/supabaseClient'
+import { Folder, Link } from 'types/interfaces'
 
-export async function getLinks() {
+export async function getLinks () {
   const { data: links } = await supabase
     .from('links')
     .select('*')
@@ -9,7 +9,7 @@ export async function getLinks() {
   return links as Link[]
 }
 
-export async function getFolders() {
+export async function getFolders () {
   const { data: links } = await supabase
     .from('folders')
     .select('*')
@@ -17,9 +17,8 @@ export async function getFolders() {
   return links as Folder[]
 }
 
-export async function createLink({ link, description, id_user, id_folder }
-  : { link: Link['link'], description: Link['description'], id_user: Link['id_user'], id_folder: Link['id_folder'] })
-{
+export async function createLink ({ link, description, id_user, id_folder }
+  : { link: Link['link'], description: Link['description'], id_user: Link['id_user'], id_folder: Link['id_folder'] }) {
   const { data } = await supabase
     .from('links')
     .insert({ link, description, id_user, id_folder })
@@ -27,7 +26,7 @@ export async function createLink({ link, description, id_user, id_folder }
   return data
 }
 
-export async function createFolder({ name, id_user }: { name: Folder['name'], id_user: Folder['id_user'] }) {
+export async function createFolder ({ name, id_user }: { name: Folder['name'], id_user: Folder['id_user'] }) {
   const { data } = await supabase
     .from('folders')
     .insert({ name, id_user })

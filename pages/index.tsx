@@ -1,5 +1,5 @@
-import NavManage from "components/NavManage"
-import NavUserOutlet from "components/NavUserOutlet"
+import NavManage from 'components/NavManage'
+import NavUserOutlet from 'components/NavUserOutlet'
 
 export default function Home () {
   return (
