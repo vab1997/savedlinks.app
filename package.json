@@ -9,11 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.1",
-    "@supabase/supabase-js": "^2.0.0-rc.10",
+    "@headlessui/react": "1.7.1",
+    "@supabase/supabase-js": "2.0.0-rc.10",
     "next": "12.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "7.35.0",
+    "react-hot-toast": "2.4.0",
     "standard": "17.0.0"
   },
   "devDependencies": {
