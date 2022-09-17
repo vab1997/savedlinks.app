@@ -104,6 +104,11 @@ export default function ListOfFolder ({ linksForFolder }: { linksForFolder: Fold
           >
             <Menu.Items className="absolute border border-slate-700 z-[100] mt-2 px-2 w-full max-h-72 overflow-auto scrollbar-thin scrollbar-thumb-slate-600 scrollbar-thumb-rounded-md py-2 divide-y bg-black divide-gray-100 rounded-md shadow-lg">
               <div className="px-1">
+                {links.length === 0 &&
+                  <Menu.Item>
+                    <p className="text-sm text-gray-300">There haven't links so far</p>
+                  </Menu.Item>
+                }
                 {links.map(({ id, link, description, read }) => (
                   <Menu.Item key={id}>
                     <ArticleLink
