@@ -56,7 +56,6 @@ export default function ListOfFolder ({ linksForFolder }: { linksForFolder: Fold
         { event: 'UPDATE', schema: 'public', table: 'links' },
         (payload: any) => {
           updateChekRead({ newRecord: payload.new })
-          console.log(payload)
         }
       )
       .subscribe()
