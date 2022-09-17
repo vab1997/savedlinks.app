@@ -6,6 +6,7 @@ import { supabase } from 'lib/supabaseClient'
 import Link from 'next/link'
 import IconFolder from './icons/IconFolder'
 import useUser from 'hooks/useUser'
+import toast, { Toaster } from 'react-hot-toast'
 
 type FolderWihtLinks = {
   id: string
@@ -56,6 +57,7 @@ export default function ListOfFolder ({ linksForFolder }: { linksForFolder: Fold
         { event: 'UPDATE', schema: 'public', table: 'links' },
         (payload: any) => {
           updateChekRead({ newRecord: payload.new })
+          toast.success('Update link successfully!')
         }
       )
       .subscribe()
@@ -82,6 +84,10 @@ export default function ListOfFolder ({ linksForFolder }: { linksForFolder: Fold
 
   return (
     <div className='flex flex-col w-full gap-3 px-3 h-[400px] overflow-auto scrollbar-thin scrollbar-thumb-slate-600 scrollbar-thumb-rounded-md'>
+      <Toaster
+        position="bottom-right"
+        reverseOrder={false}
+      />
       {timelineLinks && timelineLinks.map(({ id, name, links }) => (
         <Menu key={id} as="div" className="relative mb-3 inline-block text-center w-full">
           <div>
