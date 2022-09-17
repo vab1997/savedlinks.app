@@ -26,6 +26,21 @@ export default function ListOfFolder ({ linksForFolder }: { linksForFolder: Fold
     setTimelineLinks(newTimeline)
   }
 
+  const updateChekRead = ({ newRecord }: { newRecord: LinkType }) => {
+    const newTimeLineUpdate = timelineLinks.map((folder) => {
+      if (folder.id !== newRecord.id_folder) return folder
+      return {
+        ...folder,
+        // eslint-disable-next-line array-callback-return
+        links: [...folder.links.map((link) => {
+          if (link.id !== newRecord.id) return link
+          return { ...link, read: newRecord.read }
+        })]
+      }
+    })
+    setTimelineLinks(newTimeLineUpdate)
+  }
+
   useEffect(() => {
     const subscritpion = supabase
       .channel('public:links')
@@ -34,6 +49,14 @@ export default function ListOfFolder ({ linksForFolder }: { linksForFolder: Fold
         { event: 'INSERT', schema: 'public', table: 'links' },
         (payload: any) => {
           updatetimelineLinks({ newRecord: payload.new })
+        }
+      )
+      .on(
+        'postgres_changes',
+        { event: 'UPDATE', schema: 'public', table: 'links' },
+        (payload: any) => {
+          updateChekRead({ newRecord: payload.new })
+          console.log(payload)
         }
       )
       .subscribe()
