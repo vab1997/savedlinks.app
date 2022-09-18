@@ -1,27 +1,8 @@
-import { supabase } from 'lib/supabaseClient'
-import { useEffect, useState } from 'react'
+import useUpdateFolder from 'hooks/useUpdateFolder'
 import { Folder } from 'types/interfaces'
 
 export default function ArticleFolder ({ folders }: { folders: Folder[] }) {
-  const [timelineFolders, setTimelineFolders] = useState<Folder[]>(folders)
-
-  useEffect(() => {
-    const subscritpion = supabase
-      .channel('public:folders')
-      .on(
-        'postgres_changes',
-        { event: '*', schema: 'public', table: 'folders' },
-        (payload: any) => {
-          const newTimeLineFolders = [...timelineFolders, payload.new]
-          setTimelineFolders(newTimeLineFolders)
-        }
-      )
-      .subscribe()
-
-    return () => {
-      subscritpion.unsubscribe()
-    }
-  }, [timelineFolders])
+  const { timelineFolders } = useUpdateFolder({ folders })
 
   if (timelineFolders.length === 0) {
     return (

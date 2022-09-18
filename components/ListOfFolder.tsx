@@ -1,12 +1,12 @@
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment } from 'react'
 import ArticleLink from 'components/ArticleLink'
 import { Menu, Transition } from '@headlessui/react'
 import { Link as LinkType } from 'types/interfaces'
-import { supabase } from 'lib/supabaseClient'
 import Link from 'next/link'
 import IconFolder from './icons/IconFolder'
 import useUser from 'hooks/useUser'
-import toast, { Toaster } from 'react-hot-toast'
+import { Toaster } from 'react-hot-toast'
+import useUpdateLink from 'hooks/useUpdateLink'
 
 type FolderWihtLinks = {
   id: string
@@ -16,56 +16,8 @@ type FolderWihtLinks = {
 }
 
 export default function ListOfFolder ({ linksForFolder }: { linksForFolder: FolderWihtLinks[] }) {
-  const [timelineLinks, setTimelineLinks] = useState<typeof linksForFolder>(linksForFolder)
+  const { timelineLinks } = useUpdateLink({ linksForFolder })
   const { user } = useUser()
-
-  const updatetimelineLinks = ({ newRecord }: { newRecord: LinkType }) => {
-    const newTimeline = timelineLinks.map((folder) => {
-      if (folder.id !== newRecord.id_folder) return folder
-      return { ...folder, links: [...folder.links, newRecord] }
-    })
-    setTimelineLinks(newTimeline)
-  }
-
-  const updateChekRead = ({ newRecord }: { newRecord: LinkType }) => {
-    const newTimeLineUpdate = timelineLinks.map((folder) => {
-      if (folder.id !== newRecord.id_folder) return folder
-      return {
-        ...folder,
-        // eslint-disable-next-line array-callback-return
-        links: [...folder.links.map((link) => {
-          if (link.id !== newRecord.id) return link
-          return { ...link, read: newRecord.read }
-        })]
-      }
-    })
-    setTimelineLinks(newTimeLineUpdate)
-  }
-
-  useEffect(() => {
-    const subscritpion = supabase
-      .channel('public:links')
-      .on(
-        'postgres_changes',
-        { event: 'INSERT', schema: 'public', table: 'links' },
-        (payload: any) => {
-          updatetimelineLinks({ newRecord: payload.new })
-        }
-      )
-      .on(
-        'postgres_changes',
-        { event: 'UPDATE', schema: 'public', table: 'links' },
-        (payload: any) => {
-          updateChekRead({ newRecord: payload.new })
-          toast.success('Update link successfully!')
-        }
-      )
-      .subscribe()
-
-    return () => {
-      subscritpion.unsubscribe()
-    }
-  }, [timelineLinks])
 
   if (timelineLinks.length === 0) {
     return (
