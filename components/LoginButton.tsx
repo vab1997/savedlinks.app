@@ -10,7 +10,7 @@ export default function LoginButton () {
     <div>
       <Menu as="div" className="relative">
         <div>
-          <Menu.Button className="inline-flex items-center px-4 py-2 font-bold text-white bg-yellow-500 rounded hover:bg-yellow-400">
+          <Menu.Button className="inline-flex items-center px-4 py-2 font-bold text-white bg-yellow-400 rounded hover:bg-yellow-300">
             <span className='text-white font-medium'>Sign In</span><ChevronIcon fill='#fff' />
           </Menu.Button>
         </div>
@@ -30,15 +30,15 @@ export default function LoginButton () {
                   <button
                     onClick={loginGithub}
                     className={`${
-                      active ? 'bg-yellow-400' : ''
+                      !active ? 'hover:bg-yellow-300 rounded-b-none' : ''
                     } group flex gap-2 rounded-md items-center w-full px-4 py-2 text-sm text-gray-900 font-semibold`} >
-                    <IconGithub width={20} height={20} />
-                    Google
+                    <IconGithub width={24} height={24} />
+                    GitHub
                   </button>
                   <button
                     onClick={loginGoogle}
                     className={`${
-                      active ? 'bg-yellow-400' : ''
+                      !active ? 'hover:bg-yellow-300 rounded-t-none' : ''
                     } group flex gap-2 rounded-md items-center w-full px-4 py-2 text-sm text-gray-900 font-semibold`} >
                     <IconGoogle fill='#3d5a98' width={20} height={20} />
                     Google
