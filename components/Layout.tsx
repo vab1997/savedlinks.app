@@ -12,7 +12,7 @@ type Props = {
 
 export default function Layout ({
   children,
-  title = 'Saved Links',
+  title = 'Saved Links | A simple link saving app',
   description = 'site web for save links in folders'
 }: Props) {
   return (
@@ -23,12 +23,13 @@ export default function Layout ({
         <title>{title}</title>
         <meta name='description' content={description} />
         <link rel='icon' href='/favicon.ico' />
-        <link rel='canonical' href='' />
+        <link rel='canonical' href='https://savedlinks.vercel.app' />
 
-        <meta property='og:url' content='/' />
+        <meta property='og:url' content='https://savedlinks.vercel.app' />
         <meta property='og:type' content='website' />
         <meta property='og:title' content={title} />
         <meta property='og:description' content={description} />
+        <meta property='og:image' content='https://savedlinks.vercel.app/link.webp' />
 
         <meta name='twitter:card' content='summary_large_image' />
         <meta name='twitter:creator' content='@victorbejas' />
