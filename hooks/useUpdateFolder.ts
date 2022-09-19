@@ -10,9 +10,17 @@ export default function useUpdateFolder ({ folders }: { folders: Folder[] }) {
       .channel('public:folders')
       .on(
         'postgres_changes',
-        { event: '*', schema: 'public', table: 'folders' },
+        { event: 'INSERT', schema: 'public', table: 'folders' },
         (payload: any) => {
           const newTimeLineFolders = [...timelineFolders, payload.new]
+          setTimelineFolders(newTimeLineFolders)
+        }
+      )
+      .on(
+        'postgres_changes',
+        { event: 'DELETE', schema: 'public', table: 'folders' },
+        (payload: any) => {
+          const newTimeLineFolders = timelineFolders.filter(folder => folder.id !== payload.old.id)
           setTimelineFolders(newTimeLineFolders)
         }
       )

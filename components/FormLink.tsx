@@ -72,7 +72,7 @@ export default function FormLink ({ folders }: { folders: Folder[] }) {
           </select>
           {errors.id_folder && <p className="mt-2 text-sm font-bold text-red-500">This fiel is required</p>}
         </div>
-        <div className='relative z-0 mb-4 w-full px-6'>
+        <div className='relative flex justify-end z-0 mb-4 w-full px-6'>
           <button
             type='submit'
             className='text-white cursor-default bg-blue-500 hover:bg-blue-700 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center'
