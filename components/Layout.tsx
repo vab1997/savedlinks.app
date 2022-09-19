@@ -39,7 +39,7 @@ export default function Layout ({
       </Head>
       <main className='flex place-content-center'>
         <div className='container py-14 px-4 md:py-4'>
-          <h1 className='text-center font-medium text-white text-3xl md:text-4xl'>
+          <h1 className='block items-center justify-center gap-2 text-center mt-4 sm:mt-0 font-medium text-white text-4xl sm:flex lg:text-5xl'>
             Welcome to savedlinks
             <Image
               src={linkImage}
