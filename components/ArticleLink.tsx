@@ -1,5 +1,6 @@
 import { Link } from 'types/interfaces'
 import ButtonRead from './ButtonRead'
+import Modal from 'components/Modal'
 
 export default function ArticleLink ({ idLink, read, link, description }:
   { idLink: Link['id'], read: Link['read'], link: Link['link'], description: Link['description'] }) {
@@ -17,7 +18,8 @@ export default function ArticleLink ({ idLink, read, link, description }:
       >
         {link}
       </a>
-      <div className='pl-2 text-sm font-normal truncate'>{description}</div>
+      <div className='pl-2 text-sm text-start font-normal truncate w-64'>{description}</div>
+      <Modal />
     </article>
   )
 }
