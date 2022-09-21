@@ -34,7 +34,7 @@ export default function Modal ({ link }: { link: Link['link'] }) {
       </div>
 
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-[101]" onClose={closeModal}>
+        <Dialog as="div" className="relative h-[420px] z-[101]" onClose={closeModal}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -68,7 +68,7 @@ export default function Modal ({ link }: { link: Link['link'] }) {
                   <div className="w-80 p-4">
                     {SvgQrCode && (
                       <div
-                        className='bg-[#3685FF] rounded-lg overflow-hidden p-4 w-[288px] h-[288px]'
+                        className='bg-[#3685FF] rounded-lg overflow-hidden p-4'
                         dangerouslySetInnerHTML={{ __html: SvgQrCode }}
                       />
                     )}
