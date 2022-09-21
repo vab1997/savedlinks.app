@@ -66,12 +66,10 @@ export default function Modal ({ link }: { link: Link['link'] }) {
                     Code QR
                   </Dialog.Title>
                   <div className="w-80 p-4">
-                    {SvgQrCode && (
-                      <div
-                        className='bg-[#3685FF] rounded-lg overflow-hidden p-4 min-h-[288px]'
-                        dangerouslySetInnerHTML={{ __html: SvgQrCode }}
-                      />
-                    )}
+                    <div
+                      className='bg-[#3685FF] rounded-lg overflow-hidden p-4 min-h-[288px]'
+                      dangerouslySetInnerHTML={{ __html: SvgQrCode || '' }}
+                    />
                   </div>
 
                   <div className="mt-1">
