@@ -68,7 +68,7 @@ export default function Modal ({ link }: { link: Link['link'] }) {
                   <div className="w-80 p-4">
                     {SvgQrCode && (
                       <div
-                        className='bg-[#3685FF] rounded-lg overflow-hidden p-4'
+                        className='bg-[#3685FF] rounded-lg overflow-hidden p-4 w-[288px] h-[288px]'
                         dangerouslySetInnerHTML={{ __html: SvgQrCode }}
                       />
                     )}
