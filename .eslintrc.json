@@ -9,6 +9,7 @@
   "rules": {
     "camelcase": "off",
     "react-hooks/exhaustive-deps": "off",
-    "react/no-unescaped-entities": "off"
+    "react/no-unescaped-entities": "off",
+    "import/no-anonymous-default-export": "off"
   }
 }

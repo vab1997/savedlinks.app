@@ -19,7 +19,7 @@ export default function ArticleLink ({ idLink, read, link, description }:
         {link}
       </a>
       <div className='pl-2 text-sm text-start font-normal truncate w-64'>{description}</div>
-      <Modal />
+      <Modal link={link} />
     </article>
   )
 }
