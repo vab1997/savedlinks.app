@@ -5,6 +5,7 @@ import { Link } from 'types/interfaces'
 export default function Modal ({ link }: { link: Link['link'] }) {
   const [isOpen, setIsOpen] = useState(false)
   const [SvgQrCode, setSvgQrCode] = useState('')
+  const urlEnv = process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://savedlinks.vercel.app'
 
   function closeModal () {
     setIsOpen(false)
@@ -12,7 +13,7 @@ export default function Modal ({ link }: { link: Link['link'] }) {
 
   const fetchQrCode = async () => {
     setIsOpen(true)
-    await fetch(`http://localhost:3000/api/generate-qr?url=${link}`)
+    await fetch(`${urlEnv}/api/generate-qr?url=${link}`)
       .then((res) => res.json())
       .then((data) => {
         const { svg } = data
