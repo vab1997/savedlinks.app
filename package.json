@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "test": "npx playwright test",
     "phoenix": "del /s /q package-lock.json && echo 'Borrando node_modules...' && rmdir /s /q node_modules && cls && echo 'Instalando Dependencias' && npm install --no-fund --no-audit --no-package-lock --legacy-peer-deps",
     "lint": "next lint"
   },
