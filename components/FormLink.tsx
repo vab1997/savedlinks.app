@@ -40,24 +40,22 @@ export default function FormLink ({ folders }: { folders: Folder[] }) {
         <div className='relative z-0 mb-4 w-full px-6'>
           <input
             type='text'
-            {...register('link', { required: true })}
+            {...register('link', { required: 'Invalid URL', pattern: { value: /^https?:\/\//gm, message: 'Invalid URL' } })}
             className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-0 peer'
             placeholder=' '
-            required
           />
           <label className='absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'>URL</label>
-          {errors.link && <p className="mt-2 text-sm font-bold text-red-500">This fiel is required</p>}
+          {errors.link && <p className="mt-2 text-sm font-bold text-red-500">{errors.link.message}</p>}
         </div>
         <div className='relative z-0 mb-4 w-full px-6'>
           <input
             type='text'
-            {...register('description', { required: true })}
+            {...register('description', { required: 'Description is required' })}
             className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:border-blue-500 focus:outline-none focus:ring-0 peer'
             placeholder=' '
-            required
           />
           <label className='absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'>Description</label>
-          {errors.description && <p className="mt-2 text-sm font-bold text-red-500">This fiel is required</p>}
+          {errors.description && <p className="mt-2 text-sm font-bold text-red-500">{errors.description.message}</p>}
         </div>
         <div className='relative z-0 mb-4 w-full px-6'>
           <label className='sr-only'>Underline select</label>
