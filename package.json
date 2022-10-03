@@ -13,7 +13,7 @@
     "@headlessui/react": "1.7.1",
     "@supabase/supabase-js": "2.0.0-rc.10",
     "next": "12.3.0",
-    "qrcode": "^1.5.1",
+    "qrcode": "1.5.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "7.35.0",
@@ -22,8 +22,9 @@
     "tailwind-scrollbar": "2.0.1"
   },
   "devDependencies": {
+    "@playwright/test": "1.26.1",
     "@types/node": "18.7.18",
-    "@types/qrcode": "^1.5.0",
+    "@types/qrcode": "1.5.0",
     "@types/react": "18.0.20",
     "@types/react-dom": "18.0.6",
     "autoprefixer": "10.4.10",

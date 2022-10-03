@@ -37,3 +37,9 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
+/test-results/
+/playwright-report/
+/playwright/.cache/
+/test-results/
+/playwright-report/
+/playwright/.cache/
