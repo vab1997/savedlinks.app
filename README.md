@@ -1,4 +1,4 @@
-## Saved Links - 
+## Saved Links
 
 Aplicación web que te permite tener organizados tus links en carpetas.
 
@@ -19,11 +19,11 @@ npm run dev # levantar el entorno de desarrollo
 - **No hagas PRs cambiando configuraciones de linter.** Esta configurado con `standard`.
 - **No hagas Pull Requests tan grandes.** Cuanto más atómicas, más posibilidades que haga merge. 🚀
 - **Sigue el estilo y pásale el linter antes de hacer la PR**.
-- **La idea es que la app sea funcional y tenga lo mínimo necesario.** No reinventes la rueda. No hace falta que añadas dependencia que no tengan mucho sentido o cosa trending.
+- **La idea es que la app sea funcional y tenga lo mínimo necesario.** No hace falta que añadas dependencia que no tengan mucho sentido o cosa trending.
 
 ## Cosas que faltan por hacer
 
-- 🔹 Agregar mas test e2e
-- 🔹 Refactorizar el código
-- 🔹 Mejorar aspectos de diseño
+ 🔹 Agregar mas test e2e
+ 🔹 Refactorizar el código
+ 🔹 Mejorar aspectos de diseño
  
