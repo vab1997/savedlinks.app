@@ -45,11 +45,20 @@ export async function updateReadLink ({ idLink, read }: { idLink: Link['id'], re
   return data
 }
 
-export default async function deleteFolder ({ id_folder }: { id_folder: Folder['id'] }) {
+export async function deleteFolder ({ id_folder }: { id_folder: Folder['id'] }) {
   const { error } = await supabase
     .from('folders')
     .delete()
     .match({ id: id_folder })
+
+  return error
+}
+
+export async function deleteLink ({ id_link }: { id_link: Link['id'] }) {
+  const { error } = await supabase
+    .from('links')
+    .delete()
+    .match({ id: id_link })
 
   return error
 }

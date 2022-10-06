@@ -1,5 +1,5 @@
 import useUpdateFolder from 'hooks/useUpdateFolder'
-import deleteFolder from 'service/clientService'
+import { deleteFolder } from 'service/clientService'
 import { Folder } from 'types/interfaces'
 
 export default function ArticleFolder ({ folders }: { folders: Folder[] }) {

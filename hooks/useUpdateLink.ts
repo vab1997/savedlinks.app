@@ -1,7 +1,7 @@
-import { supabase } from 'lib/supabaseClient'
 import { useEffect, useState } from 'react'
-import toast from 'react-hot-toast'
 import { Link as LinkType } from 'types/interfaces'
+import toast from 'react-hot-toast'
+import { supabase } from 'lib/supabaseClient'
 
 type FolderWihtLinks = {
   id: string
@@ -10,52 +10,92 @@ type FolderWihtLinks = {
   links: LinkType[]
 }
 
-const updatetimelineLinks = ({ timelineLinks, newRecord }: { timelineLinks: FolderWihtLinks[], newRecord: LinkType }) => {
+type PayloadTypes = {
+  commit_timestamp: string
+  errors: null
+  eventType: 'INSERT' | 'UPDATE' | 'DELETE'
+  new: LinkType
+  old: { id: string }
+  schema: string
+  table: string
+}
+
+const updatetimelineLinks = ({ timelineLinks, recordResponse }: { timelineLinks: FolderWihtLinks[], recordResponse: PayloadTypes }) => {
   const newTimeline = timelineLinks.map((folder) => {
-    if (folder.id !== newRecord.id_folder) return folder
-    return { ...folder, links: [...folder.links, newRecord] }
+    if (folder.id !== recordResponse.new.id_folder) return folder
+    return { ...folder, links: [...folder.links, recordResponse.new] }
   })
 
   return newTimeline
 }
 
-const updateChekRead = ({ timelineLinks, newRecord }: { timelineLinks: FolderWihtLinks[], newRecord: LinkType }) => {
-  const newTimeLineUpdate = timelineLinks.map((folder) => {
-    if (folder.id !== newRecord.id_folder) return folder
+const updateChekRead = ({ timelineLinks, recordResponse }: { timelineLinks: FolderWihtLinks[], recordResponse: PayloadTypes }) => {
+  const newTimeLine = timelineLinks.map((folder) => {
+    if (folder.id !== recordResponse.new.id_folder) return folder
     return {
       ...folder,
       // eslint-disable-next-line array-callback-return
       links: [...folder.links.map((link) => {
-        if (link.id !== newRecord.id) return link
-        return { ...link, read: newRecord.read }
+        if (link.id !== recordResponse.new.id) return link
+        return { ...link, read: recordResponse.new.read }
       })]
     }
   })
 
-  return newTimeLineUpdate
+  return newTimeLine
+}
+
+const updateTimelineDelete = ({ timelineLinks, recordResponse }: { timelineLinks: FolderWihtLinks[], recordResponse: PayloadTypes }) => {
+  const newTimeLine = timelineLinks.map((folder) => {
+    return {
+      ...folder,
+      // eslint-disable-next-line array-callback-return
+      links: folder.links.filter((link) => {
+        if (link.id !== recordResponse.old.id) return link
+      })
+    }
+  })
+
+  return newTimeLine
+}
+
+const messageToastForEvent = {
+  INSERT: 'Added link successfully!',
+  UPDATE: 'Update link successfully!',
+  DELETE: 'Delete link successfully!'
+}
+
+const eventDataBase = {
+  INSERT: updatetimelineLinks,
+  UPDATE: updateChekRead,
+  DELETE: updateTimelineDelete
 }
 
 export default function useUpdateLink ({ linksForFolder }: { linksForFolder: FolderWihtLinks[] }) {
   const [timelineLinks, setTimelineLinks] = useState<typeof linksForFolder>(linksForFolder)
+
+  const updateTimeLineForEvent = (
+    { timelineLinks, event, recordResponse }:
+      { timelineLinks: FolderWihtLinks[], event: 'INSERT' | 'UPDATE' | 'DELETE', recordResponse: PayloadTypes }
+  ) => {
+    const methodPayloadEvent = eventDataBase[event]
+    const newTimeLine = methodPayloadEvent({ timelineLinks, recordResponse })
+
+    return newTimeLine
+  }
 
   useEffect(() => {
     const subscritpion = supabase
       .channel('public:links')
       .on(
         'postgres_changes',
-        { event: 'INSERT', schema: 'public', table: 'links' },
-        (payload: any) => {
-          const newTimeLineInsert = updatetimelineLinks({ timelineLinks, newRecord: payload.new })
-          setTimelineLinks(newTimeLineInsert)
-        }
-      )
-      .on(
-        'postgres_changes',
-        { event: 'UPDATE', schema: 'public', table: 'links' },
-        (payload: any) => {
-          const newTimeLineUpdate = updateChekRead({ timelineLinks, newRecord: payload.new })
-          setTimelineLinks(newTimeLineUpdate)
-          toast.success('Update link successfully!')
+        { event: '*', schema: 'public', table: 'links' },
+        (payload: PayloadTypes) => {
+          const newTimeLine = updateTimeLineForEvent({ timelineLinks, event: payload.eventType, recordResponse: payload })
+          setTimelineLinks(newTimeLine)
+
+          const messageToast = messageToastForEvent[payload.eventType]
+          toast.success(messageToast)
         }
       )
       .subscribe()
