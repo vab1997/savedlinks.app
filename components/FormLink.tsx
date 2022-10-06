@@ -62,7 +62,7 @@ export default function FormLink ({ folders }: { folders: Folder[] }) {
           <select
             {...register('id_folder', { required: true })}
             defaultValue={folders[0].id}
-            className='block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none text-gray-400 border-gray-600 focus:outline-none peer'
+            className='block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 text-gray-400 border-gray-600 focus:outline-none peer'
           >
             {folders.map(({ id, name }) => (
               <option key={id} value={id}>{name}</option>
