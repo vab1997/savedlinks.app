@@ -1,8 +1,10 @@
 import { test, expect } from '@playwright/test'
 
+const URLTEST = 'http://localhost:3000/manage-link/1a90eca7-0887-4b07-ad45-45b9129e4fc7'
+
 test('test incorrect url', async ({ page }) => {
-// Go to http://localhost:3000/manage-link/1a90eca7-0887-4b07-ad45-45b9129e4fc7
-  await page.goto('http://localhost:3000/manage-link/1a90eca7-0887-4b07-ad45-45b9129e4fc7')
+// Go to URL PAGE
+  await page.goto(URLTEST)
 
   // Click input[name="link"]
   await page.locator('input[name="link"]').click()
@@ -27,8 +29,8 @@ test('test incorrect url', async ({ page }) => {
 })
 
 test('test description is required', async ({ page }) => {
-  // Go to http://localhost:3000/manage-link/1a90eca7-0887-4b07-ad45-45b9129e4fc7
-  await page.goto('http://localhost:3000/manage-link/1a90eca7-0887-4b07-ad45-45b9129e4fc7')
+  // Go to URL PAGE
+  await page.goto(URLTEST)
 
   // Click input[name="link"]
   await page.locator('input[name="link"]').click()
@@ -53,8 +55,8 @@ test('test description is required', async ({ page }) => {
 })
 
 test('test create link successfully', async ({ page }) => {
-  // Go to http://localhost:3000/manage-link/1a90eca7-0887-4b07-ad45-45b9129e4fc7
-  await page.goto('http://localhost:3000/manage-link/1a90eca7-0887-4b07-ad45-45b9129e4fc7')
+  // Go to URL PAGE
+  await page.goto(URLTEST)
 
   // Click input[name="link"]
   await page.locator('input[name="link"]').click()
@@ -75,9 +77,6 @@ test('test create link successfully', async ({ page }) => {
   await page.locator('button:has-text("Create link")').click()
 
   // expect empty input
-  const locatorInputLink = page.locator('input[name="link"]')
-  const locatorInputDescription = page.locator('input[name="description"]')
-
-  await expect(locatorInputLink).toContainText('')
-  await expect(locatorInputDescription).toContainText('')
+  await page.locator('input[name="link"]').fill('')
+  await page.locator('input[name="description"]').fill('')
 })
