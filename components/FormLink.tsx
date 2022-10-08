@@ -24,8 +24,6 @@ export default function FormLink ({ folders }: { folders: Folder[] }) {
     await createLink({ link, description, id_user, id_folder })
 
     event.target.reset()
-
-    toast.success('created link successfully!')
   }
 
   if (folders.length === 0) return <p className='text-white font-medium text-center text-lg'>¡You have to create a folder!</p>
