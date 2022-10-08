@@ -1,6 +1,6 @@
 import useUser from 'hooks/useUser'
 import { useForm } from 'react-hook-form'
-import toast, { Toaster } from 'react-hot-toast'
+import { Toaster } from 'react-hot-toast'
 import { createLink } from 'service/clientService'
 import { Folder } from 'types/interfaces'
 
