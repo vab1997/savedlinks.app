@@ -1,30 +1,30 @@
 ## Saved Links - 
 
-Aplicación web que te permite tener organizados tus links en carpetas.
+Web aplicación that allows you to have your links organized in folders.
 
-**Aquí puedes ver la aplicación desplegada en producción:**
+**Here you can see the application deployed in production:**
 - https://savedlinks.vercel.app/
 
-## ¿Cómo ejecutar en local?
+## How to run locally?
 
-Necesitarás tener instalado `Node.js` a partir de la versión 14 y tener acceso a una terminal para seguir los siguientes pasos:
+You will need to have `Node.js` installed from version 14 and have access to a terminal to follow the following steps:
 
 ```
-npm install # instalar las dependencias
-npm run dev # levantar el entorno de desarrollo
+npm install # Install dependencies
+npm run dev # Run the application in development mode
 ```
 
-## Todas las pull requests son bienvenidas
+## All pull requests are welcome
 
-- **No hagas PRs cambiando configuraciones de linter.** Esta configurado con `standard`.
-- **No hagas Pull Requests tan grandes.** Cuanto más atómicas, más posibilidades que haga merge. 🚀
-- **Sigue el estilo y pásale el linter antes de hacer la PR**.
-- **La idea es que la app sea funcional y tenga lo mínimo necesario.** No reinventes la rueda. No hace falta que añadas dependencia que no tengan mucho sentido o cosa trending.
+- **Dont make PRs changing linter configurations.** It is configured with `standard`.
+- **Dont make Pull Requests so big.** The more atomic, the more chances that I will merge. 🚀
+- **Follow the style and run the linter before making the PR**.
+- **The idea is that the app is functional and has the minimum necessary.** Don't reinvent the wheel. There is no need to add
 
-## Cosas que faltan por hacer
+## Things to do
 
-- 🔹 Agregar mas test e2e
-- 🔹 Refactorizar el código
-- 🔹 Mejorar aspectos de diseño
-- 🔹 Agregar middleware para proteger las rutas
+- 🔹 Add more e2e tests
+- 🔹 Refactor the code
+- 🔹 Improve design aspects
+- 🔹 Add middleware to protect routes
  
