@@ -12,7 +12,7 @@ type FolderWihtLinks = {
 
 type PayloadTypes = {
   commit_timestamp: string
-  errors: null
+  errors: string[]
   eventType: 'INSERT' | 'UPDATE' | 'DELETE'
   new: LinkType
   old: { id: string }
@@ -74,9 +74,10 @@ const eventDataBase = {
 export default function useUpdateLink ({ linksForFolder }: { linksForFolder: FolderWihtLinks[] }) {
   const [timelineLinks, setTimelineLinks] = useState<typeof linksForFolder>(linksForFolder)
 
+  // the type of the payload is any, but there is an error with realtime data of supabase (type of payload is PayloadTypes)
   const updateTimeLineForEvent = (
     { timelineLinks, event, recordResponse }:
-      { timelineLinks: FolderWihtLinks[], event: 'INSERT' | 'UPDATE' | 'DELETE', recordResponse: PayloadTypes }
+      { timelineLinks: FolderWihtLinks[], event: 'INSERT' | 'UPDATE' | 'DELETE', recordResponse: any }
   ) => {
     const methodPayloadEvent = eventDataBase[event]
     const newTimeLine = methodPayloadEvent({ timelineLinks, recordResponse })
@@ -90,8 +91,10 @@ export default function useUpdateLink ({ linksForFolder }: { linksForFolder: Fol
       .on(
         'postgres_changes',
         { event: '*', schema: 'public', table: 'links' },
-        (payload: PayloadTypes) => {
-          const newTimeLine = updateTimeLineForEvent({ timelineLinks, event: payload.eventType, recordResponse: payload })
+        (payload) => {
+          const newTimeLine = updateTimeLineForEvent(
+            { timelineLinks, event: payload.eventType, recordResponse: payload }
+          )
           setTimelineLinks(newTimeLine)
 
           const messageToast = messageToastForEvent[payload.eventType]
@@ -101,7 +104,7 @@ export default function useUpdateLink ({ linksForFolder }: { linksForFolder: Fol
       .subscribe()
 
     return () => {
-      subscritpion.unsubscribe()
+      supabase.removeChannel(subscritpion)
     }
   }, [timelineLinks])
 
