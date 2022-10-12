@@ -26,4 +26,5 @@ npm run dev # levantar el entorno de desarrollo
 - 🔹 Agregar mas test e2e
 - 🔹 Refactorizar el código
 - 🔹 Mejorar aspectos de diseño
+- 🔹 Agregar middleware para proteger las rutas
  
