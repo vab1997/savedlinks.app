@@ -1,4 +1,4 @@
-## Saved Links - 
+## Saved Links
 
 Web aplicación that allows you to have your links organized in folders.
 
@@ -27,4 +27,3 @@ npm run dev # Run the application in development mode
 - 🔹 Refactor the code
 - 🔹 Improve design aspects
 - 🔹 Add middleware to protect routes
- 
